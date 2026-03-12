@@ -1,0 +1,71 @@
+country_id,country,indicator_id,indicator,scale,unit,year,gdp_ppp_billions_intl_dollars
+USA,United States,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,1980,2857.325
+JPN,Japan,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,1980,1027.574
+DEU,Germany,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,1980,922.849
+ITA,Italy,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,1980,623.346
+FRA,France,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,1980,592.732
+GBR,United Kingdom,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,1980,528.578
+BRA,Brazil,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,1980,524.99
+MEX,Mexico,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,1980,441.519
+IND,India,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,1980,366.458
+SAU,Saudi Arabia,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,1980,319.006
+USA,United States,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,1990,5963.125
+JPN,Japan,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,1990,2405.271
+DEU,Germany,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,1990,1744.915
+ITA,Italy,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,1990,1236.917
+FRA,France,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,1990,1143.643
+GBR,United Kingdom,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,1990,1053.961
+CHN,"China, People's Republic of",PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,1990,995.375
+IND,India,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,1990,947.83
+BRA,Brazil,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,1990,922.224
+MEX,Mexico,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,1990,793.392
+USA,United States,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2000,10250.95
+JPN,Japan,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2000,3350.556
+CHN,"China, People's Republic of",PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2000,3338.299
+DEU,Germany,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2000,2609.614
+IND,India,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2000,1999.921
+ITA,Italy,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2000,1798.835
+FRA,France,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2000,1743.47
+GBR,United Kingdom,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2000,1655.214
+RUS,Russian Federation,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2000,1556.696
+BRA,Brazil,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2000,1455.848
+USA,United States,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2010,15048.975
+CHN,"China, People's Republic of",PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2010,11225.111
+IND,India,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2010,4729.221
+JPN,Japan,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2010,4370.105
+DEU,Germany,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2010,3511.345
+RUS,Russian Federation,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2010,3076.938
+BRA,Brazil,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2010,2575.879
+FRA,France,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2010,2448.257
+GBR,United Kingdom,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2010,2363.63
+ITA,Italy,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2010,2280.487
+CHN,"China, People's Republic of",PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2020,25960.998
+USA,United States,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2020,21375.275
+IND,India,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2020,9771.023
+JPN,Japan,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2020,5356.711
+DEU,Germany,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2020,4881.924
+RUS,Russian Federation,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2020,4651.43
+BRA,Brazil,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2020,3359.777
+FRA,France,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2020,3345.026
+IDN,Indonesia,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2020,3223.405
+GBR,United Kingdom,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2020,3219.069
+CHN,"China, People's Republic of",PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2021,29420.351
+USA,United States,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2021,23725.65
+IND,India,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2021,11384.368
+RUS,Russian Federation,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2021,5688.268
+JPN,Japan,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2021,5604.066
+DEU,Germany,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2021,5245.574
+BRA,Brazil,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2021,3787.77
+FRA,France,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2021,3656.802
+GBR,United Kingdom,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2021,3543.829
+IDN,Indonesia,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2021,3530.623
+CHN,"China, People's Republic of",PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2022,32493.554
+USA,United States,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2022,26054.6
+IND,India,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2022,13121.957
+JPN,Japan,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2022,6060.3
+RUS,Russian Federation,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2022,6005.355
+DEU,Germany,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2022,5720.184
+BRA,Brazil,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2022,4179.563
+FRA,France,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2022,4026.598
+IDN,Indonesia,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2022,3982.44
+GBR,United Kingdom,PPPGDP,"Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar, ICP benchmarks 2017-2021",Billions,,2022,3979.566
