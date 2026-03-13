@@ -1,6 +1,9 @@
 # Generated output files — run extract_weo_pppgdp.py to reproduce
 output/
 
+# Local notes and drafts (do not commit)
+local_docs/
+
 # Python
 __pycache__/
 *.py[cod]
