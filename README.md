@@ -1,48 +1,54 @@
 # largest-economies-information-visualization
 
-A reproducible data-preparation workflow for a Tableau visualization redesign project based on the IMF World Economic Outlook dataset. The project focuses on historical GDP by country from 1980 to 2022, using the `PPPGDP` indicator (GDP at current prices, purchasing power parity, billions of international dollars). The broader goal is to critique and redesign an existing GDP-by-country infographic using data visualization principles drawn from Jonathan Schwabish, Edward Tufte, and Dunford's "When data visualization really isn't useful (and when it is)."
+A reproducible data-preparation and redesign-planning workflow for a Tableau visualization project based on the IMF World Economic Outlook (WEO) dataset. This repository focuses on historical GDP by country from 1980 to 2022 using the IMF indicator `PPPGDP` — GDP at current prices, purchasing power parity, measured in **billions of international dollars**.
 
-This repository does not claim authorship of the underlying IMF data. It only provides a documented, reproducible extraction and cleaning workflow for educational and visualization purposes.
+The broader goal is to critique and redesign the HowMuch visualization **"Largest Economies in the World Over the Last 40 Years"** using principles from Jonathan Schwabish, Edward Tufte, and Dunford. The repository does **not** claim authorship of the IMF data; it documents a transparent extraction, cleaning, and Tableau-preparation workflow for educational and visualization purposes.
 
 ---
 
 ## Project overview
 
-The starting point is the IMF WEO Excel export (`WEOOct2025all.xlsx`), which is a wide-format spreadsheet with one column per year. The `extract_weo_pppgdp.py` script filters out the relevant indicator, reshapes the data into a tidy long-format table (one row per country-year), and saves the result as CSV and XLSX files ready to load into Tableau.
+The starting point is the IMF WEO Excel export, `WEOOct2025all.xlsx`, which stores the data in a wide format with one column per year. The script `extract_weo_pppgdp.py` filters the spreadsheet to the relevant IMF series, keeps the years 1980–2022, reshapes the table into a tidy long format, and writes Tableau-ready CSV and XLSX files.
 
-The cleaned data covers all IMF member countries for the years 1980–2022, with a separate file focusing on the seven benchmark years used in the infographic: 1980, 1990, 2000, 2010, 2020, 2021, and 2022.
+This project supports a redesign assignment built around the original infographic. The documentation in this repository records:
+
+- where the source data came from,
+- how the raw IMF spreadsheet was transformed,
+- why the redesign strategy changed during evaluation,
+- and how the cleaned outputs are meant to be used in Tableau.
 
 ---
 
 ## Motivation
 
-The original infographic being redesigned presents the world's largest economies ranked by GDP over time, but it has several visual design problems — inconsistent scales, cluttered labels, and a layout that makes it hard to track individual countries across years. This project supplies a clean, well-structured dataset so that a Tableau redesign can focus entirely on visual design choices rather than data-wrangling.
+The original infographic tells an interesting rank-over-time story, but it also overloads that story with too many competing visual elements: dense crossing lines, decorative flags and circular badges, strong region coloring, and evenly spaced time columns despite uneven year intervals. These choices make the chart visually engaging, but they also make it harder to follow individual countries accurately.
 
-The redesign draws on:
-- **Jonathan Schwabish** — clear storytelling with data, reducing chart junk
-- **Edward Tufte** — data-ink ratio, small multiples, sparklines
+The purpose of this repository is to separate **data preparation** from **visual redesign**. By creating a clean, reproducible Tableau-ready dataset, the redesign work can focus on clarity, analytical task, and visual hierarchy rather than spreadsheet wrangling.
 
 ---
 
 ## Assignment context
 
-This repository supports the course assignment to:
+This repository supports a course project that requires:
 
-- select the "Largest Economies in the World Over the Last 40 Years" visualization,
-- identify at least three major issues (with citations),
-- redesign the visualization in Tableau, and
-- document the critique and redesign in a Word document with screenshots.
+- selecting an existing visualization,
+- identifying at least three major issues in priority order,
+- citing course readings to justify the critique and redesign,
+- creating a redesigned Tableau draft,
+- and documenting the process in a Word submission with screenshots.
 
-The cleaned data here is the reproducible input to the Tableau redesign. The written critique, citations, and final screenshots are produced outside this repository.
+The final write-up, screenshots, and APA citations are produced outside this repository. This repository serves as the reproducible technical and planning backbone for that work.
 
 ---
 
-## Source visualization
+## Source visualization and data
 
-- Visualization: https://howmuch.net/articles/worlds-biggest-economies-over-time
-- Underlying data: IMF WEO Excel export (`WEOOct2025all.xlsx`)
+- **Visualization selected:** *Largest Economies in The World Over the Last 40 Years* (HowMuch)
+- **Underlying data used in this repo:** IMF World Economic Outlook (WEO) Excel export
+- **Raw source file in repo:** `WEOOct2025all.xlsx`
+- **Indicator used:** `PPPGDP`
 
-Original infographic (used as the baseline for critique and redesign):
+Original infographic used as the baseline for critique and redesign:
 
 ![Original infographic showing the world's biggest economies over time](original_infographic.jpg)
 
@@ -54,45 +60,56 @@ Original infographic (used as the baseline for critique and redesign):
 |---|---|---|
 | `PPPGDP` | GDP, current prices, purchasing power parity | Billions of international dollars |
 
-PPP-adjusted GDP is used rather than nominal GDP because it allows more meaningful comparisons between countries at different price levels.
+This indicator was chosen because it matches the GDP (PPP) framing of the original visualization and supports cross-country comparison better than nominal GDP measured only in domestic currency.
 
 ---
 
 ## Repository structure
 
-```
+```text
 largest-economies-information-visualization/
-├── WEOOct2025all.xlsx          # Raw IMF WEO October 2025 spreadsheet export
-├── extract_weo_pppgdp.py       # Pandas extraction and reshaping script
-├── requirements.txt            # Python dependencies
+├── WEOOct2025all.xlsx
+├── extract_weo_pppgdp.py
+├── original_infographic.jpg
+├── README.md
+├── PROCESS.md
+├── READING_PRINCIPLES.md
+├── REDESIGN_STEPS.md
+├── INSTRUCTIONS.md
+├── requirements.txt
 ├── .gitignore
-├── output/                     # Generated by the script — not committed to git
-│   ├── weo_pppgdp_1980_2022_long.csv
-│   ├── weo_pppgdp_1980_2022_long.xlsx
-│   ├── weo_pppgdp_infographic_years_long.csv
-│   ├── weo_pppgdp_infographic_years_long.xlsx
-│   ├── weo_pppgdp_infographic_years_top10.csv
-│   └── weo_pppgdp_infographic_years_top10.xlsx
-└── README.md
+└── output/                         # generated locally by the script
+    ├── weo_pppgdp_1980_2022_long.csv
+    ├── weo_pppgdp_1980_2022_long.xlsx
+    ├── weo_pppgdp_infographic_years_long.csv
+    ├── weo_pppgdp_infographic_years_long.xlsx
+    ├── weo_pppgdp_infographic_years_top10.csv
+    └── weo_pppgdp_infographic_years_top10.xlsx
 ```
 
 ---
 
 ## How to run the script
 
-Install dependencies (Python 3.8+ required):
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run the script from the repository root, where `WEOOct2025all.xlsx` lives:
+Then run the extraction script from the repository root:
 
 ```bash
 python extract_weo_pppgdp.py
 ```
 
-Output files will be written to the `output/` folder. The script prints a short log as it runs so you can verify each step completed.
+The script will:
+
+1. load the WEO Excel file,
+2. filter to the `PPPGDP` indicator and annual observations,
+3. keep years 1980–2022,
+4. reshape the data into a long format,
+5. and save cleaned outputs into the `output/` folder.
 
 ---
 
@@ -101,13 +118,15 @@ Output files will be written to the `output/` folder. The script prints a short 
 | File | Contents |
 |---|---|
 | `weo_pppgdp_1980_2022_long.csv` | All countries, every year 1980–2022, long format |
-| `weo_pppgdp_1980_2022_long.xlsx` | Same, Excel format |
-| `weo_pppgdp_infographic_years_long.csv` | All countries, benchmark years only (1980/1990/2000/2010/2020/2021/2022) |
-| `weo_pppgdp_infographic_years_long.xlsx` | Same, Excel format |
-| `weo_pppgdp_infographic_years_top10.csv` | Top 10 economies per benchmark year |
-| `weo_pppgdp_infographic_years_top10.xlsx` | Same, Excel format |
+| `weo_pppgdp_1980_2022_long.xlsx` | Same data in Excel format |
+| `weo_pppgdp_infographic_years_long.csv` | All countries for benchmark years only: 1980, 1990, 2000, 2010, 2020, 2021, 2022 |
+| `weo_pppgdp_infographic_years_long.xlsx` | Same data in Excel format |
+| `weo_pppgdp_infographic_years_top10.csv` | Top 10 economies for each benchmark year |
+| `weo_pppgdp_infographic_years_top10.xlsx` | Same data in Excel format |
 
-**Start here in Tableau:** `weo_pppgdp_infographic_years_long.csv` — it is small, focused, and covers exactly the years used in the infographic.
+**Recommended Tableau starting file:** `weo_pppgdp_infographic_years_long.csv`
+
+It is small, focused, and aligned to the benchmark years used in the original infographic.
 
 ---
 
@@ -115,14 +134,14 @@ Output files will be written to the `output/` folder. The script prints a short 
 
 | Column | Description |
 |---|---|
-| `country_id` | IMF 3-letter country code (e.g. `USA`, `JPN`, `DEU`) |
+| `country_id` | IMF 3-letter country code |
 | `country` | Full country name |
-| `indicator_id` | Always `PPPGDP` in this dataset |
-| `indicator` | Full indicator label from the IMF source |
-| `scale` | Value scale (e.g. `Billions`) |
-| `unit` | Currency unit (`International Dollars`) |
-| `year` | Calendar year (integer) |
-| `gdp_ppp_billions_intl_dollars` | PPP GDP value in billions of international dollars |
+| `indicator_id` | Always `PPPGDP` in the cleaned outputs |
+| `indicator` | Full IMF indicator label |
+| `scale` | Value scale |
+| `unit` | Measurement unit |
+| `year` | Calendar year |
+| `gdp_ppp_billions_intl_dollars` | GDP (PPP) value in billions of international dollars |
 
 Example rows:
 
@@ -134,23 +153,28 @@ Example rows:
 
 ---
 
-## Using the data in Tableau
+## Tableau use and redesign direction
 
-1. Open Tableau Desktop and connect to a text file or Excel file.
-2. Load `weo_pppgdp_infographic_years_long.csv`.
-3. Set `year` to **Discrete** dimension (not continuous measure).
-4. `gdp_ppp_billions_intl_dollars` is your primary measure.
-5. `country` and `country_id` are your dimensions for color, labels, and filters.
+The cleaned data is intended for Tableau. The current redesign strategy treats:
 
-This long format works directly with bump charts, slope charts, highlight tables, and small multiples — the main chart types suitable for a rank-over-time visualization.
+- **small multiples as the primary redesign direction**, and
+- **a simplified bump chart as an exploratory backup**.
+
+This shift happened because a bump chart preserves rank movement well, but for this specific dataset it may still produce too many crossings and too much label congestion even after simplification. Small multiples reduce clutter, eliminate tangled trajectories, and better support a clarity-first redesign.
+
+For the Tableau workflow and redesign rationale, see:
+
+- [`PROCESS.md`](PROCESS.md)
+- [`READING_PRINCIPLES.md`](READING_PRINCIPLES.md)
+- [`REDESIGN_STEPS.md`](REDESIGN_STEPS.md)
+- [`INSTRUCTIONS.md`](INSTRUCTIONS.md)
 
 ---
 
-## Data source and attribution
+## Attribution
 
-> International Monetary Fund. *World Economic Outlook Database*, October 2025 edition.
-> Indicator: `PPPGDP` — GDP, current prices, purchasing power parity; billions of international dollars.
-> Retrieved from: <https://www.imf.org/en/Publications/WEO>
+**Data source:** International Monetary Fund (IMF), *World Economic Outlook (WEO)* database, October 2025 edition.
 
-The IMF data is publicly available and subject to the IMF's terms of use. This repository only contains a documented workflow for extracting and reshaping that data; it does not redistribute or modify the underlying values.
+**Indicator:** `PPPGDP` — GDP, current prices, purchasing power parity; billions of international dollars.
 
+This repository is intended for educational and visualization-redesign purposes. It documents a reproducible workflow for extracting and reshaping IMF data and does not claim ownership of the underlying values.

@@ -23,10 +23,13 @@ This file documents the steps completed so far for the redesign project based on
    - **Text density:** Each circle includes both country name and GDP value, which increases cognitive load and makes it harder to scan quickly.
 
    **Other notable features**
-   - The chart emphasizes a narrative of rank stability, with only a few visible swaps (for example, the U.K. and Brazil).
-   - The graphic uses a decorative style (badges, thick curves, and flags) that adds visual interest but reduces precise comparison.
-   - The design uses a single panel rather than small multiples, which makes the overall pattern visible but increases clutter where lines converge.
-2. Identified the source of the data as the International Monetary Fund (IMF) World Economic Outlook (WEO) database, Table 1.1, and confirmed the indicator used in the infographic is GDP at current prices, purchasing power parity (PPPGDP), measured in billions of international dollars.
+   - The chart shows many rank swaps across the benchmark years, producing a dense tangle of overlapping lines; the intersections themselves do not encode additional meaning and function as chartjunk rather than data.
+   - The line crossings create a "clusterf***" effect in Dunford's terms, making it difficult to follow a single country across all years without losing the trail.
+   - Flags help distinguish countries, but they introduce strong color contrasts that compete with the GDP value text. The U.S. flag, in particular, creates a vibrating effect against the numeric labels, reducing legibility.
+   - The region legend (colored circle borders) adds a categorical variable, which aligns with Tufte's idea of "escaping flatland" by encoding more dimensions, but it also forces repeated legend lookups and slows comprehension.
+   - The year spacing is inconsistent (decades from 1980–2020, then one-year steps for 2021 and 2022). Because the horizontal spacing is uniform, viewers may overestimate the magnitude of changes in the last two columns relative to earlier decades.
+2. Identified the source of the data as the International Monetary Fund (IMF) World Economic Outlook (WEO) Excel export and confirmed the indicator used in the infographic is GDP at current prices, purchasing power parity (`PPPGDP`), measured in billions of international dollars.
+   - Instead of relying on the secondary spreadsheet linked in the assignment, I located the primary IMF WEO source to preserve data accuracy and authenticity.
 3. Obtained the IMF WEO Excel export and saved it in the repository as `WEOOct2025all.xlsx`.
 4. Wrote a beginner-friendly Pandas script (`extract_weo_pppgdp.py`) to:
    - load the WEO Excel sheet,
@@ -39,17 +42,23 @@ This file documents the steps completed so far for the redesign project based on
    - a subset for the infographic benchmark years (1980, 1990, 2000, 2010, 2020, 2021, 2022),
    - and a top-10-per-year subset for those benchmark years.
 6. Updated the repository documentation to explain the purpose of the project, the data source, and how the cleaned files are intended for Tableau redesign work.
+7. Refined the redesign strategy after evaluating chart alternatives:
+   - Initially considered a bump-chart-centered redesign because it preserves rank-over-time movement.
+   - After testing the implications of line density and label crowding, shifted to a small-multiples redesign as the primary direction.
+   - Retained a simplified bump chart as an exploratory backup for comparison.
 
 ## Current status
 
-- Data source identified and saved in the repo.
+- Data source identified from the IMF World Economic Outlook (WEO) Excel export and saved in the repo.
 - Extraction and reshaping script completed.
 - Tableau-ready outputs generated locally (not committed).
-- README updated to reflect the assignment context.
+- Redesign direction refined: small multiples selected as primary Tableau draft; simplified bump chart retained as exploratory backup.
+- Documentation updated to reflect assignment context and redesign iteration.
 
 ## Next steps (outside this repository)
 
-1. Build the redesigned visualization in Tableau using the long-format dataset.
-2. Take screenshots of the redesign and insert them near the written critique.
-3. Write the required critique (three issues, 300 to 350 words each) with APA in-text citations and a Works Cited section.
-4. Submit the final Word document for the assignment.
+1. Build the small-multiples Tableau redesign using the long-format dataset.
+2. Optionally test a simplified bump chart for side-by-side comparison.
+3. Take screenshots of both the process and the improved final draft for the assignment document.
+4. Write the required critique (three issues, 300 to 350 words each) and tie each issue to the redesign decision using APA in-text citations and a Works Cited section.
+5. Submit the final Word document for the assignment.
