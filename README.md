@@ -1,6 +1,6 @@
 # largest-economies-information-visualization
 
-A reproducible data-preparation workflow for a Tableau visualization project based on the IMF World Economic Outlook dataset. The project focuses on historical GDP by country from 1980 to 2022, using the `PPPGDP` indicator (GDP at current prices, purchasing power parity, billions of international dollars). The broader goal is to redesign an existing GDP-by-country infographic using data visualization principles drawn from Jonathan Schwabish, Edward Tufte, and Cole Nussbaumer Knaflic.
+A reproducible data-preparation workflow for a Tableau visualization redesign project based on the IMF World Economic Outlook dataset. The project focuses on historical GDP by country from 1980 to 2022, using the `PPPGDP` indicator (GDP at current prices, purchasing power parity, billions of international dollars). The broader goal is to critique and redesign an existing GDP-by-country infographic using data visualization principles drawn from Jonathan Schwabish, Edward Tufte, and Dunford's "When data visualization really isn't useful (and when it is)."
 
 This repository does not claim authorship of the underlying IMF data. It only provides a documented, reproducible extraction and cleaning workflow for educational and visualization purposes.
 
@@ -21,7 +21,30 @@ The original infographic being redesigned presents the world's largest economies
 The redesign draws on:
 - **Jonathan Schwabish** — clear storytelling with data, reducing chart junk
 - **Edward Tufte** — data-ink ratio, small multiples, sparklines
-- **Cole Nussbaumer Knaflic** — audience-focused simplification
+
+---
+
+## Assignment context
+
+This repository supports the course assignment to:
+
+- select the "Largest Economies in the World Over the Last 40 Years" visualization,
+- identify at least three major issues (with citations),
+- redesign the visualization in Tableau, and
+- document the critique and redesign in a Word document with screenshots.
+
+The cleaned data here is the reproducible input to the Tableau redesign. The written critique, citations, and final screenshots are produced outside this repository.
+
+---
+
+## Source visualization
+
+- Visualization: https://howmuch.net/articles/worlds-biggest-economies-over-time
+- Underlying data: IMF WEO Excel export (`WEOOct2025all.xlsx`)
+
+Original infographic (used as the baseline for critique and redesign):
+
+![Original infographic showing the world's biggest economies over time](original_infographic.jpg)
 
 ---
 
