@@ -13,9 +13,6 @@ INPUT_IMF_SHEET = "Countries"
 INPUT_HOWMUCH_FILE = REPO_ROOT / "data" / "input" / "Largest Economies in The World Over the Last 40 Years.xlsx"
 
 TARGET_INDICATOR = "PPPGDP"
-TARGET_INDICATOR_LABEL = (
-    "Gross domestic product (GDP), Current prices, Purchasing power parity (PPP) international dollar"
-)
 
 START_YEAR = 1980
 END_YEAR = 2022
@@ -51,10 +48,6 @@ OUTPUT_COLUMNS = [
     "source_dataset",
     "country_id",
     "country",
-    "indicator_id",
-    "indicator",
-    "scale",
-    "unit",
     "year",
     "rank",
     "gdp_ppp_billions_intl_dollars",
@@ -91,17 +84,10 @@ def build_imf_long_dataframe() -> pd.DataFrame:
     if filtered.empty:
         raise ValueError("No IMF rows found for PPPGDP with annual frequency.")
 
-    keep_columns = [
-        "COUNTRY.ID",
-        "COUNTRY",
-        "INDICATOR.ID",
-        "INDICATOR",
-        "SCALE",
-        "UNIT",
-    ] + year_columns
+    keep_columns = ["COUNTRY.ID", "COUNTRY"] + year_columns
 
     long_df = filtered[keep_columns].melt(
-        id_vars=["COUNTRY.ID", "COUNTRY", "INDICATOR.ID", "INDICATOR", "SCALE", "UNIT"],
+        id_vars=["COUNTRY.ID", "COUNTRY"],
         value_vars=year_columns,
         var_name="year",
         value_name="gdp_ppp_billions_intl_dollars",
@@ -111,10 +97,6 @@ def build_imf_long_dataframe() -> pd.DataFrame:
         columns={
             "COUNTRY.ID": "country_id",
             "COUNTRY": "country",
-            "INDICATOR.ID": "indicator_id",
-            "INDICATOR": "indicator",
-            "SCALE": "scale",
-            "UNIT": "unit",
         }
     )
 
@@ -189,10 +171,6 @@ def build_howmuch_top10_dataframe() -> pd.DataFrame:
                     "source_dataset": SOURCE_DATASET_HOWMUCH,
                     "country_id": COUNTRY_ID_MAP.get(country, ""),
                     "country": country,
-                    "indicator_id": TARGET_INDICATOR,
-                    "indicator": TARGET_INDICATOR_LABEL,
-                    "scale": "Billions",
-                    "unit": "",
                     "year": year,
                     "rank": rank,
                     "gdp_ppp_billions_intl_dollars": value_billions,
