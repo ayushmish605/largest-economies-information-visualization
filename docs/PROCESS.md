@@ -1,65 +1,98 @@
-# Process log
+# Process Log
 
-This file documents the steps completed so far for the redesign project based on the "Largest Economies in the World Over the Last 40 Years" visualization.
+## Project goal
 
-## Step-by-step process
+Build a reproducible workflow for critiquing and redesigning the HowMuch infographic *“Largest Economies in the World Over the Last 40 Years”* using benchmark GDP (PPP) rankings from IMF-based data, then prepare Tableau views that better align with course principles on clarity, perceptual accuracy, and purposeful design.
 
-1. Read the original article and study the infographic titled "The World's Biggest Economies Over Time" (update: February 2021; published September 23, 2025).
-   - The original infographic image is saved in this repo as `original_infographic.jpg` for reference during critique and redesign.
-   
-   ![Original infographic showing the world's biggest economies over time](original_infographic.jpg)
+---
 
-   **Detailed description and visual analysis**
-   The infographic presents the top 10 GDP (PPP) rankings across seven benchmark years (1980, 1990, 2000, 2010, 2020, 2021, 2022). The layout is a grid of columns by year, with ranks 1 through 10 listed vertically on the left. Each country is shown as a circular badge containing the country name and GDP value, and a colored ring indicates region (North America, Europe, Asia, Latin America). The countries are connected year-to-year with thick, curved lines that trace rank changes over time, producing a slope-like effect across the columns.
+## Data sourcing and preparation
 
-   **Color and grouping**
-   Color encodes region through the ring around each circle: red for North America, green for Europe, yellow for Asia, and orange for Latin America. These hues are saturated and high-contrast, which makes regional grouping pre-attentive, but the strong color also competes with the rank and value labels inside the circles. The connecting lines use the same hue as the region, reinforcing grouping but adding additional visual density where lines overlap.
+### Initial source question
+The first task was confirming whether IMF WEO actually contained the historical GDP (PPP) data needed for the benchmark years shown in the infographic.
 
-   **Pre-attentive features (per Schwabish)**
-   - **Position on a common scale:** Rank is encoded by vertical position, which is a high-accuracy channel. The consistent row positions allow quick detection of rank changes.
-   - **Color hue:** Region is encoded by hue and is immediately visible, but it is not the primary analytic question, so it can distract from rank changes.
-   - **Connectedness and line direction:** The connecting lines create a strong sense of continuity and motion across time, which helps follow a country’s path but also produces line crossings that reduce clarity.
-   - **Enclosure/shape:** The country values are enclosed in circles, which makes them stand out as discrete items but increases ink and reduces space for labels.
-   - **Text density:** Each circle includes both country name and GDP value, which increases cognitive load and makes it harder to scan quickly.
+### Source confirmation
+The IMF WEO export does contain the relevant series for historical PPP GDP. The project then shifted from source discovery to source extraction and transformation.
 
-   **Other notable features**
-   - The chart shows many rank swaps across the benchmark years, producing a dense tangle of overlapping lines; the intersections themselves do not encode additional meaning and function as chartjunk rather than data.
-   - The line crossings create a "clusterf***" effect in Dunford's terms, making it difficult to follow a single country across all years without losing the trail.
-   - Flags help distinguish countries, but they introduce strong color contrasts that compete with the GDP value text. The U.S. flag, in particular, creates a vibrating effect against the numeric labels, reducing legibility.
-   - The region legend (colored circle borders) adds a categorical variable, which aligns with Tufte's idea of "escaping flatland" by encoding more dimensions, but it also forces repeated legend lookups and slows comprehension.
-   - The year spacing is inconsistent (decades from 1980–2020, then one-year steps for 2021 and 2022). Because the horizontal spacing is uniform, viewers may overestimate the magnitude of changes in the last two columns relative to earlier decades.
-2. Identified the source of the data as the International Monetary Fund (IMF) World Economic Outlook (WEO) Excel export and confirmed the indicator used in the infographic is GDP at current prices, purchasing power parity (`PPPGDP`), measured in billions of international dollars.
-   - Instead of relying on the secondary spreadsheet linked in the assignment, I located the primary IMF WEO source to preserve data accuracy and authenticity.
-3. Obtained the IMF WEO Excel export and saved it in the repository as `data/input/WEOOct2025all.xlsx`.
-4. Consolidated the data pipeline into one unified Pandas script (`build_largest_economies_data.py`) to:
-   - load both input spreadsheets,
-   - filter/parse top-10 benchmark-year values,
-   - harmonize columns across sources,
-   - include only `source_dataset` as the source identifier column,
-   - and export one combined top-10 CSV by default (with optional `--all-outputs` mode for extended files).
-6. Verified that differences between the two datasets are primarily a vintage/context issue (older published/projection snapshot in the HowMuch-linked spreadsheet versus later IMF WEO vintage values), not simple parsing error.
-7. Generated output datasets in the `output/` folder:
-   - `largest_economies_top10_combined.csv` (default output containing both sources),
-   - with optional extended source-specific and long-format files available through `--all-outputs`.
-8. Updated the repository documentation to explain the purpose of the project, the data source, and how the cleaned files are intended for Tableau redesign work.
-9. Refined the redesign strategy after evaluating chart alternatives:
-   - Initially considered a bump-chart-centered redesign because it preserves rank-over-time movement.
-   - After testing the implications of line density and label crowding, shifted to a small-multiples redesign as the primary direction.
-   - Retained a simplified bump chart as an exploratory backup for comparison.
+### Combined Tableau dataset
+A combined CSV was created so one Tableau workbook could switch between:
+- `HOWMUCH_IMF_DERIVED`
+- `IMF_WEO`
+
+This avoided maintaining two separate Tableau workbooks and made source comparison more transparent.
+
+---
+
+## Redesign evolution
+
+### Phase 1 — Original intuition: cleaned bump chart
+The initial redesign idea was a simplified bump chart because the source visualization is fundamentally a rank-over-time graphic. This preserved the comparative structure but still risked line tangles.
+
+### Phase 2 — Small multiples pivot
+The next redesign direction was small multiples. This improved traceability and eliminated crossings, but it also weakened cross-country comparison because countries no longer shared one clear comparison frame.
+
+### Phase 3 — Matrix / highlight-table idea
+A rank matrix was then considered because it removes line tangles and keeps rows and columns aligned. On its own, though, a plain matrix risked becoming too table-like and under-visual.
+
+### Current direction — Paired redesign
+The current redesign direction is a **paired solution**:
+
+1. **Shared rank chart** for direct comparison across countries
+2. **Rank matrix / highlight table with concise analytical story labels** for interpretation
+
+This is the strongest compromise found so far. It keeps the comparative insight of a shared chart while also giving the reader a clearer, more analytical second view.
+
+---
+
+## Why the paired redesign is stronger
+
+The original graphic’s biggest problems are still:
+1. tangled trajectories and cluttered crossings,
+2. decorative flags and badges that compete with the data,
+3. misleading equal spacing of unequal time intervals.
+
+The paired redesign addresses these better than any single prototype tested so far:
+
+- **Shared rank chart** preserves comparison while stripping away decoration.
+- **Rank matrix** removes tangles entirely and highlights specific patterns.
+- **Story labels** add interpretation rather than forcing the viewer to infer every key takeaway alone.
+
+---
+
+## Story-layer insight
+
+A major new insight in the redesign process is that the final visualization should not rely only on structure and marks. It should also include a concise story layer.
+
+Examples of likely stories:
+- China rises from lower ranks to No. 1 by the later benchmark years.
+- The United States remains dominant for decades, then moves to No. 2.
+- India steadily climbs into the upper ranks.
+- Some countries are stable near the top; others appear only later.
+
+Because the workbook can switch between `HOWMUCH_IMF_DERIVED` and `IMF_WEO`, these annotations may need to be checked and lightly adjusted by source.
+
+---
 
 ## Current status
 
-- Data source identified from the IMF World Economic Outlook (WEO) Excel export and saved in the repo.
-- Unified extraction/conversion script completed.
-- Default combined top-10 CSV generated locally.
-- Output schema keeps only `source_dataset`; source file/vintage metadata is documented in markdown.
-- Redesign direction refined: small multiples selected as primary Tableau draft; simplified bump chart retained as exploratory backup.
-- Documentation updated to reflect assignment context and redesign iteration.
+Completed:
+- data source confirmed,
+- combined Tableau CSV prepared,
+- source switcher built into the planned workflow,
+- multiple redesign directions tested conceptually and in Tableau,
+- primary redesign strategy revised from “small multiples only” to a paired redesign.
 
-## Next steps (outside this repository)
+Current preferred final direction:
+- View A: shared rank chart
+- View B: rank matrix / highlight table with concise analytical stories
 
-1. Build the small-multiples Tableau redesign using the top-10 CSV datasets.
-2. Optionally test a simplified bump chart for side-by-side comparison.
-3. Take screenshots of both the process and the improved final draft for the assignment document.
-4. Write the required critique (three issues, 300 to 350 words each) and tie each issue to the redesign decision using APA in-text citations and a Works Cited section.
-5. Submit the final Word document for the assignment.
+---
+
+## Next steps
+
+1. Build the final shared rank chart in Tableau.
+2. Build the companion rank matrix / highlight table.
+3. Add concise story labels or annotations.
+4. Test both source versions with the `source_dataset` dropdown.
+5. Capture screenshots for the final report.
+6. Tie the redesign decision back to the readings in the write-up.

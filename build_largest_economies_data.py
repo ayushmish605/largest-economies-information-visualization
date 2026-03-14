@@ -54,6 +54,21 @@ OUTPUT_COLUMNS = [
 ]
 
 
+def enforce_rank_correctness(df: pd.DataFrame) -> pd.DataFrame:
+    ranked_df = df.sort_values(
+        ["source_dataset", "year", "gdp_ppp_billions_intl_dollars", "country"],
+        ascending=[True, True, False, True],
+    ).copy()
+
+    ranked_df["rank"] = (
+        ranked_df.groupby(["source_dataset", "year"])["gdp_ppp_billions_intl_dollars"]
+        .rank(method="first", ascending=False)
+        .astype(int)
+    )
+
+    return ranked_df.sort_values(["source_dataset", "year", "rank"]).reset_index(drop=True)
+
+
 def build_imf_long_dataframe() -> pd.DataFrame:
     print("Reading IMF WEO file...")
     df = pd.read_excel(INPUT_IMF_FILE, sheet_name=INPUT_IMF_SHEET)
@@ -205,11 +220,14 @@ def main() -> None:
 
     howmuch_top10_df = build_howmuch_top10_dataframe()[OUTPUT_COLUMNS].copy()
 
-    combined_top10_df = (
+    combined_top10_df = enforce_rank_correctness(
         pd.concat([imf_top10_df, howmuch_top10_df], ignore_index=True)
-        .sort_values(["source_dataset", "year", "rank"])
-        .reset_index(drop=True)
     )
+
+    imf_top10_df = combined_top10_df[combined_top10_df["source_dataset"] == SOURCE_DATASET_IMF].copy()
+    howmuch_top10_df = combined_top10_df[
+        combined_top10_df["source_dataset"] == SOURCE_DATASET_HOWMUCH
+    ].copy()
 
     combined_csv_path = OUTPUT_DIR / "largest_economies_top10_combined.csv"
     combined_top10_df.to_csv(combined_csv_path, index=False)
