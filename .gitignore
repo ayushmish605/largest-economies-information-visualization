@@ -1,8 +1,5 @@
-# Generated output files — run extract_weo_pppgdp.py to reproduce
-output/
-
-# Local notes and drafts (do not commit)
-local_docs/
+# Local-only docs (do not commit)
+docs/private/
 
 # Python
 __pycache__/

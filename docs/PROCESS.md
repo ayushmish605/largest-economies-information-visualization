@@ -30,19 +30,21 @@ This file documents the steps completed so far for the redesign project based on
    - The year spacing is inconsistent (decades from 1980–2020, then one-year steps for 2021 and 2022). Because the horizontal spacing is uniform, viewers may overestimate the magnitude of changes in the last two columns relative to earlier decades.
 2. Identified the source of the data as the International Monetary Fund (IMF) World Economic Outlook (WEO) Excel export and confirmed the indicator used in the infographic is GDP at current prices, purchasing power parity (`PPPGDP`), measured in billions of international dollars.
    - Instead of relying on the secondary spreadsheet linked in the assignment, I located the primary IMF WEO source to preserve data accuracy and authenticity.
-3. Obtained the IMF WEO Excel export and saved it in the repository as `WEOOct2025all.xlsx`.
-4. Wrote a beginner-friendly Pandas script (`extract_weo_pppgdp.py`) to:
+3. Obtained the IMF WEO Excel export and saved it in the repository as `data/input/WEOOct2025all.xlsx`.
+4. Wrote a beginner-friendly Pandas script (`scripts/extract_weo_pppgdp.py`) to:
    - load the WEO Excel sheet,
    - filter to the `PPPGDP` indicator and annual frequency,
    - keep years 1980 through 2022,
-   - reshape the data into a tidy, long format with one row per country-year,
-   - and export Tableau-ready CSV/XLSX outputs.
-5. Generated three output datasets in the `output/` folder:
-   - full long-format dataset for 1980 to 2022,
-   - a subset for the infographic benchmark years (1980, 1990, 2000, 2010, 2020, 2021, 2022),
-   - and a top-10-per-year subset for those benchmark years.
-6. Updated the repository documentation to explain the purpose of the project, the data source, and how the cleaned files are intended for Tableau redesign work.
-7. Refined the redesign strategy after evaluating chart alternatives:
+   - rank countries by year,
+   - and export a unified top-10 CSV output by default (with optional `--all-outputs` mode for extended files).
+5. Added a second converter script (`scripts/convert_howmuch_xlsx.py`) to parse the assignment-linked spreadsheet (`data/input/Largest Economies in The World Over the Last 40 Years.xlsx`) and export the same unified schema used by the IMF script.
+6. Verified that differences between the two datasets are primarily a vintage/context issue (older published/projection snapshot in the HowMuch-linked spreadsheet versus later IMF WEO vintage values), not simple parsing error.
+7. Generated output datasets in the `output/` folder:
+   - `weo_pppgdp_infographic_years_top10.csv` (default IMF script output),
+   - `howmuch_infographic_years_top10.csv` (default HowMuch converter output),
+   - with optional extended artifacts (long files/XLSX files) available through `--all-outputs`.
+8. Updated the repository documentation to explain the purpose of the project, the data source, and how the cleaned files are intended for Tableau redesign work.
+9. Refined the redesign strategy after evaluating chart alternatives:
    - Initially considered a bump-chart-centered redesign because it preserves rank-over-time movement.
    - After testing the implications of line density and label crowding, shifted to a small-multiples redesign as the primary direction.
    - Retained a simplified bump chart as an exploratory backup for comparison.
@@ -51,13 +53,15 @@ This file documents the steps completed so far for the redesign project based on
 
 - Data source identified from the IMF World Economic Outlook (WEO) Excel export and saved in the repo.
 - Extraction and reshaping script completed.
-- Tableau-ready outputs generated locally (not committed).
+- Secondary spreadsheet converter script completed.
+- Default top-10 CSV outputs generated locally (not committed).
+- Unified schema fields are included in default CSV outputs for both input sources.
 - Redesign direction refined: small multiples selected as primary Tableau draft; simplified bump chart retained as exploratory backup.
 - Documentation updated to reflect assignment context and redesign iteration.
 
 ## Next steps (outside this repository)
 
-1. Build the small-multiples Tableau redesign using the long-format dataset.
+1. Build the small-multiples Tableau redesign using the top-10 CSV datasets.
 2. Optionally test a simplified bump chart for side-by-side comparison.
 3. Take screenshots of both the process and the improved final draft for the assignment document.
 4. Write the required critique (three issues, 300 to 350 words each) and tie each issue to the redesign decision using APA in-text citations and a Works Cited section.
