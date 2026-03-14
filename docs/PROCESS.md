@@ -31,18 +31,16 @@ This file documents the steps completed so far for the redesign project based on
 2. Identified the source of the data as the International Monetary Fund (IMF) World Economic Outlook (WEO) Excel export and confirmed the indicator used in the infographic is GDP at current prices, purchasing power parity (`PPPGDP`), measured in billions of international dollars.
    - Instead of relying on the secondary spreadsheet linked in the assignment, I located the primary IMF WEO source to preserve data accuracy and authenticity.
 3. Obtained the IMF WEO Excel export and saved it in the repository as `data/input/WEOOct2025all.xlsx`.
-4. Wrote a beginner-friendly Pandas script (`scripts/extract_weo_pppgdp.py`) to:
-   - load the WEO Excel sheet,
-   - filter to the `PPPGDP` indicator and annual frequency,
-   - keep years 1980 through 2022,
-   - rank countries by year,
-   - and export a unified top-10 CSV output by default (with optional `--all-outputs` mode for extended files).
-5. Added a second converter script (`scripts/convert_howmuch_xlsx.py`) to parse the assignment-linked spreadsheet (`data/input/Largest Economies in The World Over the Last 40 Years.xlsx`) and export the same unified schema used by the IMF script.
+4. Consolidated the data pipeline into one unified Pandas script (`build_largest_economies_data.py`) to:
+   - load both input spreadsheets,
+   - filter/parse top-10 benchmark-year values,
+   - harmonize columns across sources,
+   - include only `source_dataset` as the source identifier column,
+   - and export one combined top-10 CSV by default (with optional `--all-outputs` mode for extended files).
 6. Verified that differences between the two datasets are primarily a vintage/context issue (older published/projection snapshot in the HowMuch-linked spreadsheet versus later IMF WEO vintage values), not simple parsing error.
 7. Generated output datasets in the `output/` folder:
-   - `weo_pppgdp_infographic_years_top10.csv` (default IMF script output),
-   - `howmuch_infographic_years_top10.csv` (default HowMuch converter output),
-   - with optional extended artifacts (long files/XLSX files) available through `--all-outputs`.
+   - `largest_economies_top10_combined.csv` (default output containing both sources),
+   - with optional extended source-specific and long-format files available through `--all-outputs`.
 8. Updated the repository documentation to explain the purpose of the project, the data source, and how the cleaned files are intended for Tableau redesign work.
 9. Refined the redesign strategy after evaluating chart alternatives:
    - Initially considered a bump-chart-centered redesign because it preserves rank-over-time movement.
@@ -52,10 +50,9 @@ This file documents the steps completed so far for the redesign project based on
 ## Current status
 
 - Data source identified from the IMF World Economic Outlook (WEO) Excel export and saved in the repo.
-- Extraction and reshaping script completed.
-- Secondary spreadsheet converter script completed.
-- Default top-10 CSV outputs generated locally (not committed).
-- Unified schema fields are included in default CSV outputs for both input sources.
+- Unified extraction/conversion script completed.
+- Default combined top-10 CSV generated locally.
+- Output schema keeps only `source_dataset`; source file/vintage metadata is documented in markdown.
 - Redesign direction refined: small multiples selected as primary Tableau draft; simplified bump chart retained as exploratory backup.
 - Documentation updated to reflect assignment context and redesign iteration.
 

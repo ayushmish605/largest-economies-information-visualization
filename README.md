@@ -8,7 +8,7 @@ The broader goal is to critique and redesign the HowMuch visualization **"Larges
 
 ## Project overview
 
-The starting point is the IMF WEO Excel export, `data/input/WEOOct2025all.xlsx`, which stores the data in a wide format with one column per year. The script `scripts/extract_weo_pppgdp.py` filters the spreadsheet to the relevant IMF series, keeps the years 1980–2022, and writes a unified top-10 CSV by default for quick Tableau use.
+The starting point is the IMF WEO Excel export, `data/input/WEOOct2025all.xlsx`, which stores the data in a wide format with one column per year. A single script, `build_largest_economies_data.py`, now processes both inputs and writes one combined top-10 CSV by default for quick Tableau use.
 
 This project supports a redesign assignment built around the original infographic. The documentation in this repository records:
 
@@ -74,25 +74,23 @@ largest-economies-information-visualization/
 │   └── input/
 │       ├── WEOOct2025all.xlsx
 │       └── Largest Economies in The World Over the Last 40 Years.xlsx
-├── scripts/
-│   ├── extract_weo_pppgdp.py
-│   └── convert_howmuch_xlsx.py
+├── build_largest_economies_data.py
 ├── original_infographic.jpg
 ├── README.md
 ├── docs/
 │   ├── PROCESS.md
 │   ├── READING_PRINCIPLES.md
+│   ├── SOURCE_METADATA.md
 │   └── private/                    # local-only docs (gitignored)
 ├── requirements.txt
 ├── .gitignore
 └── output/                         # generated locally by the script
-    ├── weo_pppgdp_infographic_years_top10.csv
-    └── howmuch_infographic_years_top10.csv
+    └── largest_economies_top10_combined.csv
 ```
 
 ---
 
-## How to run the scripts
+## How to run the script
 
 Install dependencies:
 
@@ -100,45 +98,31 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-Then run the extraction script from the repository root:
+Run the unified script from the repository root:
 
 ```bash
-python scripts/extract_weo_pppgdp.py
+python build_largest_economies_data.py
 ```
 
-Default behavior for this script:
-- outputs only `output/weo_pppgdp_infographic_years_top10.csv`
+Default behavior:
+- outputs one file: `output/largest_economies_top10_combined.csv`
+- includes both sources in one table via the `source_dataset` column
 
-To also generate extended outputs (long files and XLSX files), run:
+To also generate extended outputs (source-specific CSVs, long files, and XLSX files), run:
 
 ```bash
-python scripts/extract_weo_pppgdp.py --all-outputs
+python build_largest_economies_data.py --all-outputs
 ```
 
-To convert the HowMuch-linked spreadsheet into the same unified output schema:
+The unified script will:
 
-```bash
-python scripts/convert_howmuch_xlsx.py
-```
+1. load both input files,
+2. parse and normalize top-10 benchmark-year rows,
+3. keep years 1980, 1990, 2000, 2010, 2020, 2021, and 2022,
+4. rank by source/year,
+5. and save the combined top-10 output into the `output/` folder.
 
-Default behavior for this script:
-- outputs only `output/howmuch_infographic_years_top10.csv`
-
-To also generate extended outputs (XLSX + unified folder files), run:
-
-```bash
-python scripts/convert_howmuch_xlsx.py --all-outputs
-```
-
-The IMF extraction script will:
-
-1. load the WEO Excel file,
-2. filter to the `PPPGDP` indicator and annual observations,
-3. keep years 1980–2022,
-4. rank countries per year,
-5. and save the top-10 benchmark-year output into the `output/` folder.
-
-Both scripts keep the same column schema in their default top-10 CSV outputs, so the two sources can be used together in Tableau without extra reshaping.
+Source file names and vintage details are tracked in metadata docs instead of output columns. See `docs/SOURCE_METADATA.md`.
 
 ---
 
@@ -146,14 +130,15 @@ Both scripts keep the same column schema in their default top-10 CSV outputs, so
 
 | File | Contents |
 |---|---|
-| `weo_pppgdp_infographic_years_top10.csv` | Default IMF output (top 10 economies for benchmark years) |
-| `howmuch_infographic_years_top10.csv` | Default HowMuch-linked output (top 10 entries parsed from assignment spreadsheet) |
+| `largest_economies_top10_combined.csv` | Default output containing both sources with `source_dataset` |
+| `weo_pppgdp_infographic_years_top10.csv` | Optional (`--all-outputs`) IMF-only top 10 output |
+| `howmuch_infographic_years_top10.csv` | Optional (`--all-outputs`) HowMuch-linked top 10 output |
 | `weo_pppgdp_1980_2022_long.csv` | Optional (`--all-outputs`) IMF long format |
 | `weo_pppgdp_infographic_years_long.csv` | Optional (`--all-outputs`) IMF benchmark-years long format |
 
-**Recommended Tableau starting file:** `weo_pppgdp_infographic_years_top10.csv`
+**Recommended Tableau starting file:** `largest_economies_top10_combined.csv`
 
-It is focused, immediately available in default mode, and aligned to the benchmark years used in the original infographic.
+It is focused, immediately available in default mode, and lets you compare both sources with one import.
 
 ---
 
@@ -170,8 +155,6 @@ It is focused, immediately available in default mode, and aligned to the benchma
 | `year` | Calendar year |
 | `rank` | Position within year (1 = largest GDP in that source/year) |
 | `source_dataset` | Input source identifier |
-| `source_vintage` | Data vintage/update context |
-| `source_file` | Input file path inside the repository |
 | `gdp_ppp_billions_intl_dollars` | GDP (PPP) value in billions of international dollars |
 
 Example rows:
@@ -197,6 +180,7 @@ For the Tableau workflow and redesign rationale, see:
 
 - [`docs/PROCESS.md`](docs/PROCESS.md)
 - [`docs/READING_PRINCIPLES.md`](docs/READING_PRINCIPLES.md)
+- [`docs/SOURCE_METADATA.md`](docs/SOURCE_METADATA.md)
 
 ---
 

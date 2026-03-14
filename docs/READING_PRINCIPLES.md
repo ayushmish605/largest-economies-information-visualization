@@ -4,6 +4,8 @@ This document consolidates key visualization principles from the assigned readin
 
 These principles are used to justify both the critique of the original infographic and the redesign decision process. The redesign may compare alternatives (for example, bump chart versus small multiples) rather than assume one universally correct chart type.
 
+For data-source implementation details (file names, source context, and output policy), see `docs/SOURCE_METADATA.md`.
+
 ---
 
 ## Schwabish - Better Data Visualizations (Ch. 1-2: Visual Processing and Perceptual Rankings)
